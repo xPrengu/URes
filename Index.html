@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Research Process Reviewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .section-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .sidebar-link.active { background-color: #f3f4f6; border-left: 4px solid #3b82f6; color: #1d4ed8; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .quiz-option { transition: all 0.2s; }
+        .quiz-option:disabled { cursor: not-allowed; opacity: 0.8; }
+        .rationale-box { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Mobile Menu Toggle -->
+    <button id="menu-toggle" class="fixed top-4 left-4 z-50 p-2 bg-white rounded-lg shadow-md lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            <div class="flex flex-col h-full">
+                <div class="p-6 border-b border-gray-100">
+                    <h1 class="text-xl font-bold text-blue-600 tracking-tight">Research Prelims</h1>
+                    <p class="text-xs text-gray-500 mt-1 italic">Mastery Reviewer</p>
+                </div>
+                
+                <nav class="flex-1 overflow-y-auto p-4 space-y-1 no-scrollbar">
+                    <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4 mb-2">Foundations</p>
+                    <a href="#process" class="sidebar-link block px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50">5 Phases of Research</a>
+                    <a href="#conceptual" class="sidebar-link block px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50">Conceptual Mastery</a>
+                    
+                    <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4 mb-2">Design & Method</p>
+                    <a href="#design" class="sidebar-link block px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50">Research Design Detail</a>
+                    <a href="#sampling" class="sidebar-link block px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50">Sampling Strategies</a>
+                    <a href="#measurement" class="sidebar-link block px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50">Data & Measurement</a>
+                    
+                    <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4 mb-2">Assessment</p>
+                    <a href="#quiz-section" class="sidebar-link block px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50 bg-blue-50 border-l-4 border-blue-500">Short Quiz (Random 5)</a>
+                </nav>
+
+                <div class="p-4 border-t border-gray-100">
+                    <div class="bg-blue-50 rounded-lg p-3">
+                        <div class="flex justify-between items-center mb-1">
+                            <p class="text-[10px] font-bold text-blue-700 uppercase">Review Progress</p>
+                            <span id="progress-percent" class="text-[10px] font-bold text-blue-700">0%</span>
+                        </div>
+                        <div class="w-full bg-blue-200 rounded-full h-1">
+                            <div id="progress-bar" class="bg-blue-600 h-1 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 lg:ml-64 p-4 md:p-8 lg:p-12">
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- Section 1: The 5 Phases -->
+                <section id="process" class="mb-20 scroll-mt-24">
+                    <header class="mb-10">
+                        <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">I. The Five Phases of Research</h2>
+                        <p class="text-gray-500">Research is logical, cyclical, and methodical. It starts with a problem and ends with a problem.</p>
+                    </header>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-6 items-start">
+                            <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800">Conceptual Phase</h3>
+                                <p class="text-sm text-gray-600 mt-2">Thinking, reading, and conceptualizing. Includes: Formulating the problem, Literature Review, Theoretical Framework, and Hypotheses formulation.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-6 items-start">
+                            <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800">Design & Planning Phase</h3>
+                                <p class="text-sm text-gray-600 mt-2">The blueprint phase. Includes: Selecting Research Design, identifying the Population/Sample, and specifying Data Collection methods.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-6 items-start">
+                            <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800">Empirical Phase</h3>
+                                <p class="text-sm text-gray-600 mt-2">The "Doing" phase. Includes: Actual data collection (the most time-consuming part) and Preparing data for analysis (coding/entry).</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-6 items-start">
+                            <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800">Analytic Phase</h3>
+                                <p class="text-sm text-gray-600 mt-2">Giving meaning to data. Includes: Statistical Analysis and Interpretation of results.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-6 items-start border-l-4 border-blue-500">
+                            <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">5</div>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800">Dissemination Phase</h3>
+                                <p class="text-sm text-gray-600 mt-2">Sharing results. Includes: Communicating findings (journal/conferences) and Utilizing findings in practice.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Conceptual Mastery -->
+                <section id="conceptual" class="mb-20 scroll-mt-24">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8 underline decoration-blue-500">II. Conceptual Phase Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-blue-700 mb-3">Hypothesis Types</h4>
+                            <ul class="text-sm space-y-2 text-gray-600">
+                                <li><strong>Null (Ho):</strong> No relationship exists. Aim is to reject it.</li>
+                                <li><strong>Alternative (Ha):</strong> Relationship exists.</li>
+                                <li><strong>Directional:</strong> Predicts the specific direction (e.g., "increases").</li>
+                                <li><strong>Non-directional:</strong> Predicts a change but not the direction.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-blue-700 mb-3">Literature Review</h4>
+                            <ul class="text-sm space-y-2 text-gray-600">
+                                <li><strong>Primary Source:</strong> Written by the original researcher.</li>
+                                <li><strong>Secondary Source:</strong> Summaries or interpretations by others.</li>
+                                <li><strong>PICO Framework:</strong> Population, Intervention, Comparison, Outcome.</li>
+                                <li><strong>Boolean:</strong> AND (narrows), OR (broadens), NOT (excludes).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Research Design Detail -->
+                <section id="design" class="mb-20 scroll-mt-24">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">III. Research Design Depth</h2>
+                    <div class="space-y-8">
+                        <!-- Experimental Design -->
+                        <div class="bg-emerald-50 p-8 rounded-3xl border border-emerald-100">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-4">Experimental vs. Quasi-Experimental</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+                                <div>
+                                    <span class="font-bold text-emerald-700 block mb-2">True Experimental</span>
+                                    <p class="text-emerald-900 italic mb-2">Must have 3 elements:</p>
+                                    <ul class="list-disc pl-4 space-y-1">
+                                        <li>Manipulation (Intervention)</li>
+                                        <li>Control Group (Comparison)</li>
+                                        <li>Randomization (Equal chance)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-emerald-700 block mb-2">Quasi-Experimental</span>
+                                    <p class="text-emerald-900 italic mb-2">Missing Randomization or Control.</p>
+                                    <ul class="list-disc pl-4 space-y-1">
+                                        <li>Non-equivalent Control Group</li>
+                                        <li>Time Series Design</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Validity Threats -->
+                        <div class="bg-white p-8 rounded-3xl border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6">Threats to Validity</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                                <div class="border-l-2 border-amber-400 pl-4">
+                                    <h4 class="font-bold text-gray-900">Internal Validity</h4>
+                                    <p class="text-xs text-gray-500 mb-2">Did the intervention cause the change?</p>
+                                    <ul class="text-sm space-y-1 text-gray-600">
+                                        <li><strong>History:</strong> External events during study.</li>
+                                        <li><strong>Maturation:</strong> Natural changes in subjects.</li>
+                                        <li><strong>Testing:</strong> Bias from repeated tests.</li>
+                                        <li><strong>Mortality:</strong> Subjects dropping out (Attrition).</li>
+                                    </ul>
+                                </div>
+                                <div class="border-l-2 border-blue-400 pl-4">
+                                    <h4 class="font-bold text-gray-900">External Validity</h4>
+                                    <p class="text-xs text-gray-500 mb-2">Can results be generalized?</p>
+                                    <ul class="text-sm space-y-1 text-gray-600">
+                                        <li><strong>Hawthorne Effect:</strong> Bias due to being watched.</li>
+                                        <li><strong>Novelty Effect:</strong> Response to "newness" of treatment.</li>
+                                        <li><strong>Experimenter Effect:</strong> Researcher's behavior bias.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Sampling & Measurement -->
+                <section id="sampling" class="mb-20 scroll-mt-24">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">IV. Sampling & Measurement Techniques</h2>
+                    <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
+                        <div class="mb-8">
+                            <h4 class="font-bold text-gray-800 mb-4 border-b pb-2">Sampling Formula & Rules</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="p-4 bg-gray-50 rounded-xl">
+                                    <span class="block text-xs font-bold text-gray-400 uppercase">Sample Size</span>
+                                    <p class="font-bold text-gray-800">Power Analysis</p>
+                                    <p class="text-[10px] text-gray-500">Standard power = .80 (80%)</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-xl">
+                                    <span class="block text-xs font-bold text-gray-400 uppercase">Probability</span>
+                                    <p class="font-bold text-gray-800">Random Selection</p>
+                                    <p class="text-[10px] text-gray-500">Every member has an equal chance.</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-xl">
+                                    <span class="block text-xs font-bold text-gray-400 uppercase">Non-Probability</span>
+                                    <p class="font-bold text-gray-800">Non-Random</p>
+                                    <p class="text-[10px] text-gray-500">Higher risk of bias (Purposive, Quota).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="measurement">
+                            <h4 class="font-bold text-gray-800 mb-4 border-b pb-2">Measurement Scales</h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-sm">
+                                    <thead class="bg-gray-50 text-gray-500">
+                                        <tr>
+                                            <th class="px-4 py-3 font-semibold">Scale Type</th>
+                                            <th class="px-4 py-3 font-semibold">Definition</th>
+                                            <th class="px-4 py-3 font-semibold">Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100">
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold">Likert Scale</td>
+                                            <td class="px-4 py-3">Ordinal scale measuring intensity of agreement.</td>
+                                            <td class="px-4 py-3 text-blue-600">5-point (Strongly Agree to Disagree)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold">Visual Analogue (VAS)</td>
+                                            <td class="px-4 py-3">100mm line measuring subjective experience.</td>
+                                            <td class="px-4 py-3 text-blue-600">Pain intensity rating</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold">Semantic Differential</td>
+                                            <td class="px-4 py-3">Scales with bipolar adjectives.</td>
+                                            <td class="px-4 py-3 text-blue-600">Good — Bad / Hot — Cold</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: The Quiz -->
+                <section id="quiz-section" class="mb-32 scroll-mt-24">
+                    <div class="bg-gray-900 rounded-[2.5rem] p-8 md:p-16 text-white shadow-2xl overflow-hidden relative">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600 opacity-10 rounded-full -mr-32 -mt-32"></div>
+                        
+                        <div id="quiz-intro">
+                            <h2 class="text-4xl font-bold mb-4">Exam Simulator</h2>
+                            <p class="text-gray-400 mb-10 leading-relaxed text-lg">We've loaded a bank of 30 complex research questions. This simulator will select 5 random questions to test your depth of understanding. Each answer includes a detailed rationale.</p>
+                            <button id="start-quiz-btn" class="px-10 py-4 bg-blue-600 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/20">Start Prelim Simulation</button>
+                        </div>
+
+                        <div id="quiz-game" class="hidden">
+                            <div class="flex justify-between items-center mb-10">
+                                <span id="question-count" class="text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-900/40 px-3 py-1 rounded-full">Question 1 of 5</span>
+                                <span id="current-score" class="text-xs font-bold uppercase tracking-widest text-emerald-400">Current Score: 0</span>
+                            </div>
+                            <p id="question-text" class="text-xl md:text-2xl font-semibold mb-10 leading-snug"></p>
+                            <div id="options-container" class="grid grid-cols-1 gap-4">
+                                <!-- Options injected here -->
+                            </div>
+                            
+                            <!-- Rationale Box -->
+                            <div id="rationale-container" class="hidden mt-8 p-6 bg-white/5 border border-white/10 rounded-2xl rationale-box">
+                                <p id="rationale-header" class="text-xs font-bold uppercase tracking-wider mb-2"></p>
+                                <p id="rationale-text" class="text-sm text-gray-300 leading-relaxed"></p>
+                            </div>
+
+                            <button id="next-question-btn" class="hidden mt-8 w-full py-4 bg-white text-gray-900 rounded-2xl font-bold hover:bg-blue-50 transition-colors">Continue to Next Question</button>
+                        </div>
+
+                        <div id="quiz-results" class="hidden text-center">
+                            <h2 class="text-5xl font-extrabold mb-4">Simulation Result</h2>
+                            <p id="final-score-text" class="text-7xl font-black text-blue-500 mb-6"></p>
+                            <div id="performance-msg" class="text-gray-400 mb-10 text-lg"></div>
+                            <button onclick="initQuiz()" class="px-10 py-4 bg-blue-600 rounded-full font-bold hover:bg-blue-700 transition-colors">Shuffle & Try New Questions</button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- 30 Advanced Questions with Rationales ---
+        const questionBank = [
+            { 
+                q: "During which phase of the research process does a researcher formulate a theoretical framework?", 
+                a: ["Empirical Phase", "Conceptual Phase", "Design Phase", "Analytic Phase"], 
+                correct: 1,
+                rationale: "The Conceptual Phase involves intellectual activities like problem formulation, literature review, and building the framework that guides the study."
+            },
+            { 
+                q: "A researcher uses every 10th name on a list of registered nurses. This is called:", 
+                a: ["Simple Random", "Stratified Random", "Systematic Random", "Quota Sampling"], 
+                correct: 2,
+                rationale: "Systematic sampling follows a specific interval (k-th element) from a list or population frame."
+            },
+            { 
+                q: "What does the .80 power analysis value represent in quantitative research?", 
+                a: ["80% confidence interval", "Minimum acceptable sample power", "The probability of a Type I error", "The effect size"], 
+                correct: 1,
+                rationale: ".80 is the standard for power, meaning the study has an 80% chance of detecting a true effect, with a 20% risk of a Type II error."
+            },
+            { 
+                q: "In an experiment, if subjects drop out before completion, it is a threat to internal validity called:", 
+                a: ["Maturation", "History", "Mortality (Attrition)", "Selection Bias"], 
+                correct: 2,
+                rationale: "Mortality or Attrition refers to the loss of subjects over time, which can bias results if those who leave are different from those who stay."
+            },
+            { 
+                q: "Which level of measurement classifies objects into categories but lacks rank or distance?", 
+                a: ["Nominal", "Ordinal", "Interval", "Ratio"], 
+                correct: 0,
+                rationale: "Nominal is the lowest level; it only provides labels (e.g., gender, blood type) with no inherent order."
+            },
+            { 
+                q: "The 'Hawthorne Effect' is considered a threat to which type of validity?", 
+                a: ["Internal Validity", "External Validity", "Content Validity", "Construct Validity"], 
+                correct: 1,
+                rationale: "It affects External Validity because subjects behave differently when observed, making it hard to generalize findings to real-world (unobserved) settings."
+            },
+            { 
+                q: "Which Boolean operator is used to broaden a literature search by including synonyms?", 
+                a: ["AND", "OR", "NOT", "BUT"], 
+                correct: 1,
+                rationale: "'OR' expands the search by including any of the terms (e.g., 'Anxiety OR Stress'). 'AND' narrows the search."
+            },
+            { 
+                q: "A research design that lacks randomization but includes a control group is termed:", 
+                a: ["Non-experimental", "Quasi-experimental", "True Experimental", "Descriptive"], 
+                correct: 1,
+                rationale: "Quasi-experiments are used when randomization is not ethical or practical, but a comparison (control) group is still available."
+            },
+            { 
+                q: "What is the strongest level of measurement that includes a meaningful absolute zero?", 
+                a: ["Interval", "Ordinal", "Ratio", "Nominal"], 
+                correct: 2,
+                rationale: "Ratio scales (like weight or height) have an absolute zero, allowing for statements like 'twice as much'."
+            },
+            { 
+                q: "A pilot study is primarily done to:", 
+                a: ["Prove the hypothesis", "Save money", "Test the feasibility/instruments", "Recruit more subjects"], 
+                correct: 2,
+                rationale: "Pilot studies are 'dress rehearsals' to identify flaws in methods or tools before the large-scale study."
+            },
+            { 
+                q: "PICO is a tool used for:", 
+                a: ["Statistical analysis", "Sampling calculation", "Formulating clinical questions", "Coding data"], 
+                correct: 2,
+                rationale: "PICO (Population, Intervention, Comparison, Outcome) helps structure clinical research questions for literature searches."
+            },
+            { 
+                q: "Which phase of research is known as the 'doing' phase where data is collected?", 
+                a: ["Design Phase", "Empirical Phase", "Analytic Phase", "Conceptual Phase"], 
+                correct: 1,
+                rationale: "The Empirical Phase is when the researcher goes to the field to collect data and prepare it for analysis."
+            },
+            { 
+                q: "A Type II error occurs when:", 
+                a: ["You reject a true null hypothesis", "You fail to reject a false null hypothesis", "You have a small sample", "You use the wrong scale"], 
+                correct: 1,
+                rationale: "Type II error (Beta) is missing an effect that actually exists. Type I error (Alpha) is seeing an effect that doesn't exist."
+            },
+            { 
+                q: "Which scale uses bipolar adjectives like 'Cold/Hot' to measure attitudes?", 
+                a: ["Likert Scale", "Semantic Differential", "Visual Analogue", "Dichotomous"], 
+                correct: 1,
+                rationale: "Semantic Differential scales measure the psychological meaning of concepts using opposite adjective pairs."
+            },
+            { 
+                q: "In sampling, the 'target population' is:", 
+                a: ["People you actually study", "The entire group of interest", "The sampling frame", "The snowball network"], 
+                correct: 1,
+                rationale: "The target population is the group of people the researcher wants to generalize the findings to."
+            },
+            { 
+                q: "Random assignment of subjects to groups is intended to reduce:", 
+                a: ["Selection Bias", "Hawthorne Effect", "Testing Threat", "Mortality"], 
+                correct: 0,
+                rationale: "Randomization ensures that individual differences are distributed equally across groups, preventing selection bias."
+            },
+            { 
+                q: "A hypothesis that predicts 'higher stress leads to lower performance' is:", 
+                a: ["Null", "Non-directional", "Directional", "Complex"], 
+                correct: 2,
+                rationale: "It specifies a direction ('lower'), making it a directional hypothesis."
+            },
+            { 
+                q: "What is the main purpose of a literature review?", 
+                a: ["To fill pages", "To summarize everything ever written", "To identify gaps and establish knowledge", "To name-drop famous researchers"], 
+                correct: 2,
+                rationale: "Literature reviews ground the study in existing science and identify what is yet to be discovered (gaps)."
+            },
+            { 
+                q: "Multicausality in research refers to:", 
+                a: ["One cause for one effect", "Multiple causes for one effect", "One cause for multiple effects", "No relationship"], 
+                correct: 1,
+                rationale: "Most human outcomes (like health) are caused by multiple factors (diet, genetics, environment) working together."
+            },
+            { 
+                q: "Which of these is a Non-Probability sampling method?", 
+                a: ["Cluster", "Stratified", "Purposive", "Systematic"], 
+                correct: 2,
+                rationale: "Purposive sampling relies on the researcher's judgment to pick specific subjects, rather than random chance."
+            },
+            { 
+                q: "The actual list of names used to draw a sample is called the:", 
+                a: ["Sample Pool", "Sampling Frame", "Quota List", "Target Frame"], 
+                correct: 1,
+                rationale: "A sampling frame is the physical list (e.g., phone book, membership roster) from which a sample is selected."
+            },
+            { 
+                q: "What is 'Attrition' in a longitudinal study?", 
+                a: ["Gaining subjects", "Losing subjects over time", "Changing the intervention", "Increasing validity"], 
+                correct: 1,
+                rationale: "Attrition (Experimental Mortality) is the threat where subjects drop out, potentially changing the group's characteristics."
+            },
+            { 
+                q: "Which paradigm believes 'reality exists and can be measured objectively'?", 
+                a: ["Constructivist", "Positivist", "Qualitative", "Naturalistic"], 
+                correct: 1,
+                rationale: "The Positivist paradigm is the basis for quantitative research, believing in a single, objective reality."
+            },
+            { 
+                q: "A research design that provides a picture of a situation as it naturally happens:", 
+                a: ["Experimental", "Descriptive", "Correlational", "Longitudinal"], 
+                correct: 1,
+                rationale: "Descriptive studies observe and document phenomena without trying to change or manipulate them."
+            },
+            { 
+                q: "In an experiment, the 'Control' group's purpose is to:", 
+                a: ["Ensure nobody gets hurt", "Provide a baseline for comparison", "Increase subject numbers", "Eliminate randomization"], 
+                correct: 1,
+                rationale: "The control group shows what happens without the intervention, allowing the researcher to isolate the effect of the treatment."
+            },
+            { 
+                q: "Snowball sampling is most useful for which type of population?", 
+                a: ["General public", "Students", "Hard-to-reach or hidden groups", "Random patients"], 
+                correct: 2,
+                rationale: "Snowball (Network) sampling uses existing participants to recruit others from their hidden social circle (e.g., drug users)."
+            },
+            { 
+                q: "What is the primary goal of the Dissemination phase?", 
+                a: ["Start a new study", "Interpret data", "Communicate and use results", "Collect more data"], 
+                correct: 2,
+                rationale: "Research is useless if kept secret. Dissemination involves publishing and applying findings to improve practice."
+            },
+            { 
+                q: "A 100-mm line with 'No Pain' and 'Worst Pain' anchors is a:", 
+                a: ["Likert", "Visual Analogue Scale", "Category Scale", "Nominal Scale"], 
+                correct: 1,
+                rationale: "The Visual Analogue Scale (VAS) is a common tool for measuring subjective intensities like pain or fatigue."
+            },
+            { 
+                q: "Which threat to validity occurs when external events happen simultaneously with the study?", 
+                a: ["Maturation", "History", "Testing", "Instrumentation"], 
+                correct: 1,
+                rationale: "History refers to events (like a policy change or news event) that happen during the study and affect outcomes."
+            },
+            { 
+                q: "Developing a 'Theoretical Framework' usually happens in which phase?", 
+                a: ["Design", "Empirical", "Conceptual", "Analytic"], 
+                correct: 2,
+                rationale: "Conceptualization must happen before planning or doing. It sets the logical structure of the investigation."
+            }
+        ];
+
+        // --- Quiz Engine Logic ---
+        let currentQuizQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+
+        const quizIntro = document.getElementById('quiz-intro');
+        const quizGame = document.getElementById('quiz-game');
+        const quizResults = document.getElementById('quiz-results');
+        const startBtn = document.getElementById('start-quiz-btn');
+        const nextBtn = document.getElementById('next-question-btn');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const rationaleContainer = document.getElementById('rationale-container');
+        const rationaleHeader = document.getElementById('rationale-header');
+        const rationaleText = document.getElementById('rationale-text');
+        const countDisplay = document.getElementById('question-count');
+        const scoreDisplay = document.getElementById('current-score');
+        const finalScoreText = document.getElementById('final-score-text');
+        const performanceMsg = document.getElementById('performance-msg');
+
+        function initQuiz() {
+            // Shuffle whole bank and take 5
+            const shuffled = [...questionBank].sort(() => 0.5 - Math.random());
+            currentQuizQuestions = shuffled.slice(0, 5);
+            currentIndex = 0;
+            score = 0;
+            
+            quizIntro.classList.add('hidden');
+            quizResults.classList.add('hidden');
+            quizGame.classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = currentQuizQuestions[currentIndex];
+            questionText.innerText = q.q;
+            countDisplay.innerText = `Question ${currentIndex + 1} of 5`;
+            scoreDisplay.innerText = `Current Score: ${score}`;
+            rationaleContainer.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            optionsContainer.innerHTML = "";
+
+            q.a.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "quiz-option text-left px-6 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all";
+                btn.innerText = opt;
+                btn.onclick = () => handleAnswer(idx, q.correct, btn, q.rationale);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(choice, correct, btn, rationale) {
+            const buttons = optionsContainer.querySelectorAll('button');
+            buttons.forEach(b => b.disabled = true);
+
+            if (choice === correct) {
+                btn.classList.add('bg-emerald-600', 'border-emerald-500');
+                rationaleHeader.innerText = "Correct Choice";
+                rationaleHeader.className = "text-xs font-bold uppercase tracking-wider mb-2 text-emerald-400";
+                score++;
+            } else {
+                btn.classList.add('bg-red-600', 'border-red-500');
+                buttons[correct].classList.add('bg-emerald-600', 'border-emerald-500');
+                rationaleHeader.innerText = "Incorrect Choice";
+                rationaleHeader.className = "text-xs font-bold uppercase tracking-wider mb-2 text-red-400";
+            }
+
+            rationaleText.innerText = rationale;
+            rationaleContainer.classList.remove('hidden');
+            scoreDisplay.innerText = `Current Score: ${score}`;
+            nextBtn.classList.remove('hidden');
+        }
+
+        nextBtn.onclick = () => {
+            currentIndex++;
+            if (currentIndex < 5) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        };
+
+        function showResults() {
+            quizGame.classList.add('hidden');
+            quizResults.classList.remove('hidden');
+            finalScoreText.innerText = `${score} / 5`;
+            
+            if(score === 5) performanceMsg.innerText = "Perfect score! You've mastered the prelim concepts.";
+            else if(score >= 3) performanceMsg.innerText = "Solid understanding. Re-review the sections you missed for full mastery.";
+            else performanceMsg.innerText = "Keep studying! Research terminology is technical. Re-read the design and phases sections.";
+        }
+
+        startBtn.onclick = initQuiz;
+
+        // --- Core UI & Progress Logic ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const links = document.querySelectorAll('.sidebar-link');
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+        const sections = document.querySelectorAll('section');
+
+        menuToggle.onclick = () => sidebar.classList.toggle('-translate-x-full');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach(section => {
+                if (pageYOffset >= (section.offsetTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            links.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            });
+
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.pageYOffset / totalHeight) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressPercent.innerText = `${Math.round(progress)}%`;
+        });
+    </script>
+</body>
+</html>
